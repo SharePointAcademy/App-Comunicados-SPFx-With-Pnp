@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "ffc5cf74-f61f-473f-b465-952bc6398fa0",
+  "id": "5178b341-90f2-40df-9ed9-8f14306dcdac",
   "alias": "AdmComunicadosWebPart",
   "componentType": "WebPart",
 
@@ -17,7 +17,7 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "AdmComunicados" },
-    "description": { "default": "Permite administrar os comunicados cadastrados" },
+    "description": { "default": "Permite aprovar comunicados" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "AdmComunicados"

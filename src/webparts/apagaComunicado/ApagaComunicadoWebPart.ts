@@ -1,9 +1,6 @@
 //necessario para carregar componentes externos, nesse caso iremos carregar o bootstrap
 import { SPComponentLoader } from '@microsoft/sp-loader';
 
-//importa o jquery
-import * as jQuery from 'jquery';
-
 import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
@@ -12,8 +9,8 @@ import {
 } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './CadastraComunicadosWebPart.module.scss';
-import * as strings from 'CadastraComunicadosWebPartStrings';
+import styles from './ApagaComunicadoWebPart.module.scss';
+import * as strings from 'ApagaComunicadoWebPartStrings';
 
 //carrega o pnp
 import { sp, Item, ItemAddResult } from '@pnp/sp';
@@ -21,17 +18,11 @@ import { sp, Item, ItemAddResult } from '@pnp/sp';
 //carrega bootstrap
 SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
 
-export interface IListItem {
-  Id: number;
-  Title?: string;
-  Link?: string;
-}
-
-export interface ICadastraComunicadosWebPartProps {
+export interface IApagaComunicadoWebPartProps {
   description: string;
 }
 
-export default class CadastraComunicadosWebPart extends BaseClientSideWebPart<ICadastraComunicadosWebPartProps> {
+export default class ApagaComunicadoWebPart extends BaseClientSideWebPart<IApagaComunicadoWebPartProps> {
 
   public onInit(): Promise<void> {
     return super.onInit().then(_ => {
@@ -43,18 +34,18 @@ export default class CadastraComunicadosWebPart extends BaseClientSideWebPart<IC
 
   public render(): void {
     this.domElement.innerHTML = `
-      <div class="${ styles.cadastraComunicados}">
+      <div class="${ styles.apagaComunicado}">
         <div class="${ styles.container}">
           <div class="${ styles.row}">
             <div class="${ styles.column}">              
               <div class="row">
               <div class="col-md-8">
-                <h2>Criar comunicado</h2>
+                <h2>Apagar comunicado</h2>
                 <div class="form-group">
                   <input type="text" id="txtTitulo" placeholder="Título do comunicado" class="form-control"/>
                   <input type="text" id="txtLink" placeholder="https://www.google.com.br" class="form-control"/>
                   <br/>
-                  <button type="button" class="btn btn-success criarComunicado">Salvar</button>
+                  <button type="button" class="btn btn-danger apagarComunicado">Excluir</button>
                 </div>
               </div>
             </div>
@@ -75,45 +66,22 @@ export default class CadastraComunicadosWebPart extends BaseClientSideWebPart<IC
         sp.web.lists.getByTitle(this.properties.description).items.getById(idItem).get().then((item: any) => {
           (<HTMLInputElement>document.getElementById('txtTitulo')).value = item.Title;
           (<HTMLInputElement>document.getElementById('txtLink')).value = item.Link;
-          //jQuery('#txtTitulo').val(item.Title);
-          //jQuery('#txtLink').val(item.Link);
         });
       } 
   }
 
   private setButtonsEventHandlers(): void {
-    const webPart: CadastraComunicadosWebPart = this;
-    this.domElement.querySelector('button.criarComunicado').addEventListener('click', () => { webPart.criarComunicado(); });
+    const webPart: ApagaComunicadoWebPart = this;
+    this.domElement.querySelector('button.apagarComunicado').addEventListener('click', () => { webPart.apagarComunicado(); });
   }
 
-  private criarComunicado(): void {
+  private apagarComunicado(): void {
     var origem = this.getQueryStringParameter("idComunicado");
+    var idComunicado = parseInt(origem);
 
-    if (origem == "") {
-      sp.web.lists.getByTitle(this.properties.description).items.add({
-        'Title': document.getElementById('txtTitulo')["value"],
-        'Link': document.getElementById('txtLink')["value"]
-
-      }).then((result: ItemAddResult): void => {
-        const item: IListItem = result.data as IListItem;
-        console.log(`Id do item criado ${item.Id}`);
-        window.location.href = this.context.pageContext.web.absoluteUrl + "/SitePages/AdmComunicados.aspx";
-      }, (error: any): void => {
-        console.log('Erro ao cadastrar o comunicado: ' + error);
-      });
-    }
-    else {
-      var idComunicado = parseInt(origem);
-        sp.web.lists.getByTitle(this.properties.description).items.getById(idComunicado).update({
-          'Title': document.getElementById('txtTitulo')["value"],
-          'Link': document.getElementById('txtLink')["value"]
-      });
-
-      console.log('Id do comunicado igual a: ' + idComunicado);
-      window.location.href = this.context.pageContext.web.absoluteUrl + "/SitePages/AdmComunicados.aspx";
-
-    }
-
+    sp.web.lists.getByTitle(this.properties.description).items.getById(idComunicado).delete();    
+    console.log("Comunicado ID : "+ idComunicado + " Apagado !");
+    window.location.href = this.context.pageContext.web.absoluteUrl + "/SitePages/AdmComunicados.aspx";
   }
 
   private getQueryStringParameter(paramToRetrieve) {

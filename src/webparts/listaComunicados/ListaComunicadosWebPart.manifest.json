@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "040ee10b-28c0-48f7-83b3-cd118a238fd8",
+  "id": "5d81a1e3-d0d2-4bad-a95c-3c9c70150a61",
   "alias": "ListaComunicadosWebPart",
   "componentType": "WebPart",
 
@@ -17,7 +17,7 @@
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
     "title": { "default": "ListaComunicados" },
-    "description": { "default": "Exibe os comunicados cadastrados" },
+    "description": { "default": "Lista os comunicados cadastrados" },
     "officeFabricIconFontName": "Page",
     "properties": {
       "description": "ListaComunicados"

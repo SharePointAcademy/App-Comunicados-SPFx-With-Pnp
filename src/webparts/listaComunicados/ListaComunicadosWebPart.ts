@@ -18,7 +18,6 @@ import { sp, Item } from '@pnp/sp';
 //carrega bootstrap
 SPComponentLoader.loadCss('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css');
 
-
 export interface IListaComunicadosWebPartProps {
   description: string;
 }

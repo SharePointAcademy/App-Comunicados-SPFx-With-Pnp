@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
-  "id": "fd275d0a-26c2-49a3-ad92-941bb627f8fb",
-  "alias": "CadastraComunicadosWebPart",
+  "id": "807db9a3-3cb5-4aaf-b621-b04e6ed24cce",
+  "alias": "ApagaComunicadoWebPart",
   "componentType": "WebPart",
 
   // The "*" signifies that the version should be taken from the package.json
@@ -16,11 +16,11 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "CadastraComunicados" },
-    "description": { "default": "Permite cadastrar comunicados" },
+    "title": { "default": "ApagaComunicado" },
+    "description": { "default": "permite apagar um comunicado" },
     "officeFabricIconFontName": "Page",
     "properties": {
-      "description": "CadastraComunicados"
+      "description": "ApagaComunicado"
     }
   }]
 }

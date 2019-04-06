@@ -1,16 +1,16 @@
 /* tslint:disable */
 require("./ListaComunicadosWebPart.module.css");
 const styles = {
-  listaComunicados: 'listaComunicados_9fa3cf1e',
-  container: 'container_9fa3cf1e',
-  row: 'row_9fa3cf1e',
-  column: 'column_9fa3cf1e',
-  'ms-Grid': 'ms-Grid_9fa3cf1e',
-  title: 'title_9fa3cf1e',
-  subTitle: 'subTitle_9fa3cf1e',
-  description: 'description_9fa3cf1e',
-  button: 'button_9fa3cf1e',
-  label: 'label_9fa3cf1e',
+  listaComunicados: 'listaComunicados_05d5f3bf',
+  container: 'container_05d5f3bf',
+  row: 'row_05d5f3bf',
+  column: 'column_05d5f3bf',
+  'ms-Grid': 'ms-Grid_05d5f3bf',
+  title: 'title_05d5f3bf',
+  subTitle: 'subTitle_05d5f3bf',
+  description: 'description_05d5f3bf',
+  button: 'button_05d5f3bf',
+  label: 'label_05d5f3bf',
 };
 
 export default styles;

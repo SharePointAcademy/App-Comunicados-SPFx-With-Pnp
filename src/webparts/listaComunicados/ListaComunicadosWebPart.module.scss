@@ -9,11 +9,8 @@
 
   .row {
     @include ms-Grid-row;
-    @include ms-fontColor-white;
-    background-color: $ms-color-themeDark;
     padding: 20px;
   }
-
   .column {
     @include ms-Grid-col;
     @include ms-lg10;
